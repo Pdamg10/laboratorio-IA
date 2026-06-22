@@ -1,6 +1,6 @@
 from app.core.database import SessionLocal
 from app.models.user import User
-from app.core.security import get_password_hash
+from app.api.routes.auth import get_password_hash
 import uuid
 
 def seed_users():
@@ -35,6 +35,21 @@ def seed_users():
             print("Usuario Estudiante creado: estudiante@lab.com / estudiante123")
         else:
             print("Usuario Estudiante ya existe.")
+
+        # Check if ADMIN exists
+        admin = db.query(User).filter(User.email == "admin@lab.com").first()
+        if not admin:
+            admin = User(
+                id=uuid.uuid4(),
+                email="admin@lab.com",
+                nombre="Administrador",
+                password_hash=get_password_hash("admin123"),
+                rol="ADMIN"
+            )
+            db.add(admin)
+            print("Usuario Admin creado: admin@lab.com / admin123")
+        else:
+            print("Usuario Admin ya existe.")
 
         db.commit()
     except Exception as e:
