@@ -1,0 +1,17 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+alembic
+pydantic
+pydantic-settings
+python-jose[cryptography]
+passlib[bcrypt]
+python-multipart
+httpx
+numpy
+networkx
+pytest
+pytest-asyncio
+websockets
+email-validator
+google-generativeai
