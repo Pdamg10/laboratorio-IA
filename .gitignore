@@ -8,3 +8,5 @@ venv/
 .venv/
 graphify-out/
 .DS_Store
+
+.env
